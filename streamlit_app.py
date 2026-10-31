@@ -66,7 +66,10 @@ def new_game():
 def show_image(filename, caption=None, width=None):
     path = ASSETS / filename
     if path.exists():
-        st.image(str(path), caption=caption, width=width)
+        if width is None:
+            st.image(str(path), caption=caption)
+        else:
+            st.image(str(path), caption=caption, width=width)
     else:
         st.warning(f"Image not found: {filename}")
 
